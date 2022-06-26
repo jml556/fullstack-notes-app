@@ -1,13 +1,12 @@
-const notesRouter = require('./noteRouter');
 const User = require('../models/user');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
 
 const usersRouter = require('express').Router();
 
 usersRouter.get('/', async (req, res) => {
-  const data = await User.find({})
-  console.log(data)
-  return res.status(200).json(data)
+  const data = await User.find({});
+  console.log(data);
+  return res.status(200).json(data);
 });
 
 usersRouter.post('/', async (req, res) => {
@@ -18,7 +17,7 @@ usersRouter.post('/', async (req, res) => {
 
   const saltRounds = 10;
 
-  const hashedPassword = await bcrypt.hash(password, saltRounds)
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
 
   const newUser = new User({
     username,
